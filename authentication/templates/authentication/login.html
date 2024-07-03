@@ -1,0 +1,42 @@
+{% extends "authentication/base.html" %}
+{% block title %} Login {% endblock title %}
+
+{% block main %}
+<div class="max-w-md mx-auto my-20 bg-white p-6 rounded-lg shadow-xl">
+  <h1 class="text-3xl mb-4 text-center">Login</h1>
+
+  <div class="flex flex-col gap-4">
+
+  
+  <form method="POST" class="space-y-4">
+    {% csrf_token %}
+    <div>
+      <label for="email" class="block mb-1">Email address</label>
+      <input
+        type="email"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="email"
+        placeholder="someone@example.com"
+      />
+    </div>
+
+    <div>
+      <label for="password" class="block mb-1">Password</label>
+      <input
+        type="password"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        id="exampleInputPassword1"
+        name="password"
+        placeholder="********"
+      />
+    </div>
+
+    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">Login</button>
+  </form>
+
+  <a href="/api/auth/register" class="text-sm text-center hover:underline text-blue-500 hover:cursor-pointer">Don't have an account? Register Here!</a>
+</div>
+</div>
+{% endblock main %}

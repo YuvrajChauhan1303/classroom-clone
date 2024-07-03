@@ -1,0 +1,46 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{% block title %} {% endblock %}</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    {% if messages %} {% for message in messages %}
+    <li>
+      {% if message.tags %}
+      <div class="alert alert-{{ message.tags }} msg fade show" role="alert">
+        {{ message }}
+      </div>
+      {% else %}
+      <div class="alert alert-info msg fade show" role="alert">
+        {{ message }}
+      </div>
+      {% endif %}
+    </li>
+    {% endfor %} {% endif %}
+
+    <div class="container grid grid-cols-3">
+      <div class="border-r-2 h-[100vh]">
+          <div class="p-4">
+              {% block heading %}{% endblock %}
+              <hr class="my-4">
+              {% block subheading %}{% endblock %}
+              <div class="h-[6rem] w-full mt-[130%]">
+                {% block additional%}{% endblock %}
+              </div>
+          </div>
+      </div>
+  
+      <div class="col-span-2 flex justify-center pt-20">
+          <div class="p-4">
+              {% block main %} {% endblock %}
+          </div>
+      </div>
+  </div>
+  
+  </body>
+</html>

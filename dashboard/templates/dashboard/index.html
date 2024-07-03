@@ -1,0 +1,46 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block heading %}
+<h1 class="text-4xl font-bold mb-4 pt-8 px-4">Classrooms</h1>
+{% endblock %}
+{% block subheading %}
+<p class="px-4">Classrooms Enrolled or Created: {{ classrooms|length }}</p>
+<h3 class="px-4 text-sm pt-4 text-gray-500">View all your classrooms (enrolled or created). Access them by double clicking the Classroom Image.</h3>
+{% endblock %}
+
+{% block additional %}
+
+<div class="flex flex-row gap-16  justify-center items-center h-full border-y-2">
+  <button class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md" > <a href="/api/auth/logout">Logout</a> </button>
+  <button class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md" ><a href="/create-classroom">Create Room</a></button>
+</div>
+
+{% endblock %}
+
+{% block main %}
+
+
+
+<div class="grid grid-cols-3 gap-24 -gap-y-16">
+  {% for c in classrooms %}
+  <div class="border border-gray-300 rounded-lg shadow-lg p-4 flex flex-col items-center w-[18rem]">
+    <div class="h-36 w-full bg-gray-400 rounded-lg flex items-center justify-center">
+      {% comment %} <img /> {% endcomment %}
+    </div>
+
+    <hr class="border-t border-gray-300 border-dashed my-4 w-full">
+
+    <div class="flex flex-col pt-4 text-center">
+      <h5 class="capitalize font-semibold text-gray-900">{{ c.classroom.title }}</h5>
+      <p class="text-gray-500 normal-case mt-2">
+        {{ c.classroom.desc }}
+      </p>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock main %}

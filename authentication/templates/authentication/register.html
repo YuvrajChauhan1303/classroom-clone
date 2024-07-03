@@ -1,0 +1,53 @@
+{% extends "authentication/base.html" %}
+{% block title %} Register {% endblock title %}
+
+{% block main %}
+<div class="max-w-md mx-auto my-20 bg-white p-6 rounded-lg shadow-xl">
+  <h1 class="text-3xl mb-4 text-center">Register</h1>
+
+  <div class="flex flex-col gap-4">
+
+  
+  <form method="POST" class="space-y-4">
+    {% csrf_token %}
+    <div>
+      <label for="fname" class="block mb-1">First Name</label>
+      <input placeholder="John" type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" id="fname" name="fname" />
+    </div>
+
+    <div>
+      <label for="lname" class="block mb-1">Last Name</label>
+      <input type="text" placeholder="Doe" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" id="lname" name="lname" />
+    </div>
+
+    <div>
+      <label for="email" class="block mb-1">Email address</label>
+      <input
+        type="email"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="email"
+        placeholder="someone@example.com"
+      />
+      <p class="text-xs text-gray-500 mt-1">We'll never share your email with anyone else.</p>
+    </div>
+
+    <div>
+      <label for="password" class="block mb-1">Password</label>
+      <input
+        type="password"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        id="exampleInputPassword1"
+        name="password"
+        placeholder="********"
+      />
+    </div>
+
+    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">Submit</button>
+  </form>
+
+  <a href="/api/auth/login" class="text-sm text-center hover:underline text-blue-500 hover:cursor-pointer">Already a User? Login Here!</a>
+</div>
+</div>
+{% endblock main %}
